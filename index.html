@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal IPS Kelas 9 - Azalia Fadillah, S.Pd.</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#7C3AED',
+                            pink: '#EC4899',
+                            blue: '#3B82F6',
+                            cyan: '#06B6D4',
+                            emerald: '#10B981',
+                            amber: '#F59E0B',
+                            orange: '#F97316',
+                            rose: '#F43F5E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 50%, #E0C3FC 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .colorful-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px -5px rgba(124, 58, 237, 0.15);
+        }
+        .vibrant-gradient-1 {
+            background: linear-gradient(135deg, #FF6B6B 0%, #556270 100%);
+        }
+        .vibrant-gradient-purple {
+            background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%);
+        }
+        .vibrant-banner {
+            background: linear-gradient(135deg, #667EEA 0%, #764BA2 50%, #F5576C 100%);
+        }
+        .vibrant-card-pink {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%);
+            border: 2px solid #FFB6C1;
+        }
+        .vibrant-card-purple {
+            background: linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%);
+            border: 2px solid #C084FC;
+        }
+        .vibrant-card-blue {
+            background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+            border: 2px solid #38BDF8;
+        }
+        .vibrant-card-emerald {
+            background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+            border: 2px solid #34D399;
+        }
+        .vibrant-card-amber {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border: 2px solid #FBBF24;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FF0844 0%, #FFB199 50%, #6A11CB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #EC4899;
+            border-radius: 9999px;
+        }
+        .nav-active {
+            background: linear-gradient(135deg, #FF0844 0%, #FFB199 100%) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(255, 8, 68, 0.4);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-12">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-md border-b-2 border-pink-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Title -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="switchSection('beranda')">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-600 to-amber-400 flex items-center justify-center text-white text-2xl shadow-lg shadow-pink-500/30 transform hover:rotate-6 transition">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-extrabold text-xl sm:text-2xl gradient-text tracking-tight">IPS SMP KELAS 9</h1>
+                        <p class="text-xs font-bold text-pink-600 tracking-wide uppercase">Semester 1 • Azalia Fadillah, S.Pd.</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden xl:flex items-center gap-1 bg-gradient-to-r from-purple-100 via-pink-100 to-yellow-100 p-1.5 rounded-2xl border-2 border-purple-200 shadow-inner">
+                    <button onclick="switchSection('beranda')" id="nav-beranda" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-purple-900 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-house"></i> Beranda
+                    </button>
+                    <button onclick="switchSection('profil')" id="nav-profil" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-slate-700 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-tie"></i> Pengajar
+                    </button>
+                    <button onclick="switchSection('presensi')" id="nav-presensi" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-slate-700 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-clipboard-user text-emerald-600"></i> Presensi
+                    </button>
+                    <button onclick="switchSection('materi')" id="nav-materi" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-slate-700 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-book-open"></i> Materi
+                    </button>
+                    <button onclick="switchSection('rpp')" id="nav-rpp" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-slate-700 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-file-signature"></i> RPP/Modul
+                    </button>
+                    <button onclick="switchSection('jadwal')" id="nav-jadwal" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-slate-700 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-clock"></i> Jadwal
+                    </button>
+                    <button onclick="switchSection('kalender')" id="nav-kalender" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-slate-700 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-calendar-days"></i> Kalender
+                    </button>
+                    <button onclick="switchSection('tugas')" id="nav-tugas" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-slate-700 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-tasks"></i> Tugas
+                    </button>
+                    <button onclick="switchSection('diskusi')" id="nav-diskusi" class="nav-item px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-slate-700 hover:bg-white/80 flex items-center gap-1.5">
+                        <i class="fa-solid fa-comments"></i> Forum
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="xl:hidden">
+                    <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-md hover:opacity-90 transition">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden xl:hidden px-4 pt-2 pb-6 space-y-2 border-t-2 border-pink-200 bg-white/95 backdrop-blur-md">
+            <button onclick="switchSection('beranda')" class="w-full text-left px-4 py-3 rounded-xl font-extrabold text-sm flex items-center gap-3 text-purple-700 bg-purple-100">
+                <i class="fa-solid fa-house w-5"></i> Beranda
+            </button>
+            <button onclick="switchSection('profil')" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 text-slate-700 hover:bg-purple-50">
+                <i class="fa-solid fa-user-tie w-5"></i> Profil Pengajar
+            </button>
+            <button onclick="switchSection('presensi')" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 text-emerald-700 bg-emerald-50 hover:bg-emerald-100">
+                <i class="fa-solid fa-clipboard-user w-5 text-emerald-600"></i> Presensi Siswa (Absensi)
+            </button>
+            <button onclick="switchSection('materi')" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 text-slate-700 hover:bg-purple-50">
+                <i class="fa-solid fa-book-open w-5"></i> Materi Pembelajaran
+            </button>
+            <button onclick="switchSection('rpp')" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 text-slate-700 hover:bg-purple-50">
+                <i class="fa-solid fa-file-signature w-5"></i> RPP & Modul Ajar
+            </button>
+            <button onclick="switchSection('jadwal')" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 text-slate-700 hover:bg-purple-50">
+                <i class="fa-solid fa-clock w-5"></i> Jadwal Mengajar
+            </button>
+            <button onclick="switchSection('kalender')" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 text-slate-700 hover:bg-purple-50">
+                <i class="fa-solid fa-calendar-days w-5"></i> Kalender Pendidikan
+            </button>
+            <button onclick="switchSection('tugas')" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 text-slate-700 hover:bg-purple-50">
+                <i class="fa-solid fa-tasks w-5"></i> Kumpulan Tugas
+            </button>
+            <button onclick="switchSection('diskusi')" class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 text-slate-700 hover:bg-purple-50">
+                <i class="fa-solid fa-comments w-5"></i> Ruang Diskusi
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+
+        <!-- ================= BERANDA SECTION ================= -->
+        <section id="sec-beranda" class="space-y-8 transition-all duration-300">
+            <!-- Hero Banner Colorful -->
+            <div class="vibrant-banner rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border-4 border-white">
+                <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-yellow-300/30 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-10 -top-10 w-72 h-72 bg-pink-400/40 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="space-y-4 max-w-2xl relative z-10">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400 text-purple-950 text-xs font-black tracking-wider uppercase shadow-md">
+                        <i class="fa-solid fa-sparkles"></i> Portal Belajar Interaktif IPS IX
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight drop-shadow-md">
+                        Selamat Datang Di Kelas IPS <br><span class="text-yellow-300 underline decoration-pink-400">Azalia Fadillah!</span>
+                    </h2>
+                    <p class="text-white text-sm sm:text-base leading-relaxed font-medium">
+                        Mari pelajari fenomena perubahan sosial masyarakat dan kemajuan pesat ekonomi digital secara seru, kreatif, dan penuh warna!
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="switchSection('presensi')" class="px-6 py-3.5 rounded-2xl bg-emerald-400 text-slate-950 font-black text-sm hover:bg-emerald-300 transition shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-user text-lg"></i> Isi Presensi Hari Ini
+                        </button>
+                        <button onclick="switchSection('materi')" class="px-6 py-3.5 rounded-2xl bg-white text-purple-900 font-black text-sm hover:bg-yellow-300 transition shadow-xl transform hover:-translate-y-1">
+                            <i class="fa-solid fa-play-circle mr-1 text-pink-600"></i> Mulai Belajar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Teacher Card Display inside Hero -->
+                <div class="relative z-10 bg-white/20 backdrop-blur-xl p-5 rounded-3xl border-2 border-white/40 text-center flex flex-col items-center w-full md:w-auto min-w-[260px] shadow-2xl">
+                    <div class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-yellow-300 via-pink-400 to-purple-600 shadow-xl mb-3 overflow-hidden">
+                        <img src="Gemini_Generated_Image_j0tt7fj0tt7fj0tt.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/8b5cf6/ffffff?text=Azalia+Fadillah';" 
+                             alt="Foto Guru Azalia Fadillah" 
+                             class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="font-black text-lg text-white drop-shadow">Azalia Fadillah, S.Pd.</h3>
+                    <p class="text-xs text-yellow-300 font-extrabold uppercase tracking-wide">Pengajar IPS Kelas IX</p>
+                    <p class="text-[11px] text-purple-100 mt-1 font-medium">UIN Syarif Hidayatullah Jakarta</p>
+                </div>
+            </div>
+
+            <!-- Colorful Quick Features Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div onclick="switchSection('presensi')" class="vibrant-card-emerald p-5 rounded-3xl hover:scale-105 transition cursor-pointer shadow-lg group">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-xl font-bold mb-3 shadow-md group-hover:rotate-12 transition">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h4 class="font-extrabold text-base text-emerald-950">Presensi Siswa</h4>
+                    <p class="text-xs text-emerald-800 font-medium mt-1">Absensi harian interaktif</p>
+                </div>
+                <div onclick="switchSection('materi')" class="vibrant-card-purple p-5 rounded-3xl hover:scale-105 transition cursor-pointer shadow-lg group">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-xl font-bold mb-3 shadow-md group-hover:rotate-12 transition">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                    <h4 class="font-extrabold text-base text-purple-950">Modul & Video</h4>
+                    <p class="text-xs text-purple-800 font-medium mt-1">Materi Bab 1 & Bab 2</p>
+                </div>
+                <div onclick="switchSection('tugas')" class="vibrant-card-pink p-5 rounded-3xl hover:scale-105 transition cursor-pointer shadow-lg group">
+                    <div class="w-12 h-12 rounded-2xl bg-pink-500 text-white flex items-center justify-center text-xl font-bold mb-3 shadow-md group-hover:rotate-12 transition">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </div>
+                    <h4 class="font-extrabold text-base text-pink-950">Tugas & STS/SAS</h4>
+                    <p class="text-xs text-pink-800 font-medium mt-1">Kumpulkan lembar kerja</p>
+                </div>
+                <div onclick="switchSection('diskusi')" class="vibrant-card-amber p-5 rounded-3xl hover:scale-105 transition cursor-pointer shadow-lg group">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl font-bold mb-3 shadow-md group-hover:rotate-12 transition">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h4 class="font-extrabold text-base text-amber-950">Forum Tanya Jawab</h4>
+                    <p class="text-xs text-amber-800 font-medium mt-1">Ruang diskusi seru</p>
+                </div>
+            </div>
+
+            <!-- Visi & Misi Pembelajaran Colorful Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Visi Card -->
+                <div class="vibrant-card-purple p-6 sm:p-8 rounded-3xl relative overflow-hidden shadow-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center text-2xl shadow-lg">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-purple-950">Visi Pembelajaran</h3>
+                            <p class="text-xs text-purple-700 font-extrabold uppercase">IPS Kelas IX</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-700 text-sm leading-relaxed font-semibold italic">
+                        "Mewujudkan peserta didik yang cerdas secara analitis, berkarakter Pancasila, memiliki pemahaman kritis terhadap perubahan sosial abad ke-21, serta bijak dan terampil dalam mengarungi era ekonomi digital."
+                    </p>
+                </div>
+
+                <!-- Misi Card -->
+                <div class="vibrant-card-pink p-6 sm:p-8 rounded-3xl relative overflow-hidden shadow-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-600 text-white flex items-center justify-center text-2xl shadow-lg">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-pink-950">Misi Pembelajaran</h3>
+                            <p class="text-xs text-pink-700 font-extrabold uppercase">Langkah Strategis</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-pink-600 mt-0.5 text-base"></i>
+                            <span>Mengembangkan nalar kritis siswa terhadap fenomena perubahan sosial & globalisasi.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-pink-600 mt-0.5 text-base"></i>
+                            <span>Menanamkan nilai kearifan lokal sebagai benteng utama pengaruh budaya luar.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-pink-600 mt-0.5 text-base"></i>
+                            <span>Meningkatkan literasi keuangan dan kewaspadaan transaksi digital modern.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PROFIL PENGAJAR SECTION ================= -->
+        <section id="sec-profil" class="hidden space-y-8">
+            <div class="colorful-card p-6 sm:p-10 rounded-3xl shadow-2xl border-4 border-white bg-gradient-to-br from-purple-100/90 via-pink-100/90 to-yellow-100/90">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                    <!-- Photo Container with User Photo -->
+                    <div class="relative group">
+                        <div class="w-56 h-72 sm:w-64 sm:h-80 rounded-3xl p-2.5 bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 shadow-2xl overflow-hidden transform group-hover:scale-105 transition duration-300">
+                            <img src="Gemini_Generated_Image_j0tt7fj0tt7fj0tt.jpg" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/400x550/8b5cf6/ffffff?text=Azalia+Fadillah,+S.Pd.';" 
+                                 alt="Foto Pengajar Azalia Fadillah" 
+                                 class="w-full h-full object-cover rounded-2xl shadow-inner">
+                        </div>
+                        <span class="absolute -bottom-3 right-4 bg-emerald-500 text-white text-xs font-black px-4 py-1.5 rounded-full shadow-lg border-2 border-white flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-white animate-ping"></span> Guru IPS Aktif
+                        </span>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="flex-1 space-y-5 text-center md:text-left">
+                        <div>
+                            <span class="px-4 py-1.5 rounded-full bg-purple-600 text-white text-xs font-black uppercase tracking-wider shadow">Profil Tenaga Pendidik</span>
+                            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-3">Azalia Fadillah, S.Pd.</h2>
+                            <p class="text-base text-purple-700 font-extrabold mt-1">Guru Mata Pelajaran Ilmu Pengetahuan Sosial (IPS)</p>
+                        </div>
+
+                        <!-- Highlights Badges -->
+                        <div class="flex flex-wrap justify-center md:justify-start gap-2.5 pt-1">
+                            <span class="px-4 py-2 rounded-2xl bg-blue-500 text-white text-xs font-extrabold shadow-md flex items-center gap-2">
+                                <i class="fa-solid fa-graduation-cap"></i> S1 Pendidikan IPS
+                            </span>
+                            <span class="px-4 py-2 rounded-2xl bg-emerald-500 text-white text-xs font-extrabold shadow-md flex items-center gap-2">
+                                <i class="fa-solid fa-university"></i> UIN Syarif Hidayatullah Jakarta
+                            </span>
+                            <span class="px-4 py-2 rounded-2xl bg-amber-500 text-white text-xs font-extrabold shadow-md flex items-center gap-2">
+                                <i class="fa-solid fa-award"></i> Pengajar Kelas IX
+                            </span>
+                        </div>
+
+                        <!-- Bio Description -->
+                        <div class="bg-white/80 p-6 rounded-3xl border-2 border-purple-200 text-slate-700 text-sm leading-relaxed space-y-3 font-medium shadow-md">
+                            <p>
+                                Salam hangat! Saya <strong>Azalia Fadillah</strong>, lulusan dari <strong>S1 Pendidikan Ilmu Pengetahuan Sosial - UIN Syarif Hidayatullah Jakarta</strong>. Berkomitmen untuk menciptakan suasana pembelajaran IPS yang interaktif, menyenangkan, kontekstual, dan relevan dengan perkembangan zaman.
+                            </p>
+                            <p>
+                                Melalui portal ini, diharapkan para peserta didik kelas IX dapat lebih mudah mengoreksi materi, mengisi absensi harian, mengunggah tugas, serta aktif berdiskusi mengenai fenomena sosial dan ekonomi digital saat ini.
+                            </p>
+                        </div>
+
+                        <!-- Contact & Info Cards Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                            <div class="p-4 rounded-2xl bg-purple-200/80 border border-purple-300 text-center">
+                                <i class="fa-solid fa-envelope text-purple-700 text-2xl mb-1"></i>
+                                <p class="text-[10px] uppercase font-black text-purple-900">Email Resmi</p>
+                                <p class="text-xs font-bold text-slate-800">azalia@sekolah.sch.id</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-pink-200/80 border border-pink-300 text-center">
+                                <i class="fa-solid fa-school text-pink-700 text-2xl mb-1"></i>
+                                <p class="text-[10px] uppercase font-black text-pink-900">Instansi</p>
+                                <p class="text-xs font-bold text-slate-800">SMP Negeri / MTs</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-cyan-200/80 border border-cyan-300 text-center">
+                                <i class="fa-solid fa-location-dot text-cyan-700 text-2xl mb-1"></i>
+                                <p class="text-[10px] uppercase font-black text-cyan-900">Wilayah</p>
+                                <p class="text-xs font-bold text-slate-800">Jakarta & Sekitarnya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= FITUR PRESENSI SISWA (NEW) ================= -->
+        <section id="sec-presensi" class="hidden space-y-8">
+            <div class="colorful-card p-6 sm:p-8 rounded-3xl shadow-2xl border-4 border-white bg-gradient-to-br from-emerald-50 via-teal-100 to-cyan-100 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b-2 border-emerald-200 pb-4">
+                    <div>
+                        <span class="px-3.5 py-1.5 rounded-full bg-emerald-500 text-white text-xs font-black uppercase tracking-wider shadow">Absensi Digital</span>
+                        <h2 class="text-2xl sm:text-3xl font-black text-emerald-950 mt-1">Presensi Kehadiran Siswa IPS</h2>
+                        <p class="text-xs text-emerald-800 font-semibold">Silakan isi formulir kehadiran sebelum kegiatan belajar mengajar dimulai</p>
+                    </div>
+                    <!-- Live Stats summary -->
+                    <div class="flex gap-2 text-center">
+                        <div class="bg-white/90 border border-emerald-300 px-3 py-2 rounded-2xl shadow-sm">
+                            <p class="text-[10px] uppercase font-bold text-slate-500">Hadir</p>
+                            <p class="text-lg font-black text-emerald-600" id="stat-hadir">0</p>
+                        </div>
+                        <div class="bg-white/90 border border-blue-300 px-3 py-2 rounded-2xl shadow-sm">
+                            <p class="text-[10px] uppercase font-bold text-slate-500">Izin</p>
+                            <p class="text-lg font-black text-blue-600" id="stat-izin">0</p>
+                        </div>
+                        <div class="bg-white/90 border border-amber-300 px-3 py-2 rounded-2xl shadow-sm">
+                            <p class="text-[10px] uppercase font-bold text-slate-500">Sakit</p>
+                            <p class="text-lg font-black text-amber-600" id="stat-sakit">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Form Presensi -->
+                    <div class="lg:col-span-1 bg-white/90 p-6 rounded-3xl border-2 border-emerald-200 shadow-lg space-y-4">
+                        <h3 class="font-extrabold text-base text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-pen-to-square text-emerald-600"></i> Form Input Presensi
+                        </h3>
+                        <form id="attendance-form" onsubmit="handleAttendanceSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap Siswa</label>
+                                <input type="text" id="att-name" required placeholder="Masukkan Nama Anda..." class="w-full px-4 py-2.5 rounded-xl border-2 border-emerald-200 text-xs font-semibold focus:ring-2 focus:ring-emerald-400 outline-none">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Kelas</label>
+                                    <select id="att-class" class="w-full px-3 py-2.5 rounded-xl border-2 border-emerald-200 text-xs font-bold focus:ring-2 focus:ring-emerald-400 outline-none">
+                                        <option value="IX-A">IX-A</option>
+                                        <option value="IX-B">IX-B</option>
+                                        <option value="IX-C">IX-C</option>
+                                        <option value="IX-D">IX-D</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Tanggal</label>
+                                    <input type="date" id="att-date" required class="w-full px-3 py-2.5 rounded-xl border-2 border-emerald-200 text-xs font-bold focus:ring-2 focus:ring-emerald-400 outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Status Kehadiran</label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <label class="flex items-center justify-center p-2 rounded-xl border-2 border-emerald-300 bg-emerald-50 cursor-pointer text-xs font-bold text-emerald-800 has-[:checked]:bg-emerald-500 has-[:checked]:text-white">
+                                        <input type="radio" name="att-status" value="Hadir" checked class="hidden"> Hadir
+                                    </label>
+                                    <label class="flex items-center justify-center p-2 rounded-xl border-2 border-blue-300 bg-blue-50 cursor-pointer text-xs font-bold text-blue-800 has-[:checked]:bg-blue-500 has-[:checked]:text-white">
+                                        <input type="radio" name="att-status" value="Izin" class="hidden"> Izin
+                                    </label>
+                                    <label class="flex items-center justify-center p-2 rounded-xl border-2 border-amber-300 bg-amber-50 cursor-pointer text-xs font-bold text-amber-800 has-[:checked]:bg-amber-500 has-[:checked]:text-white">
+                                        <input type="radio" name="att-status" value="Sakit" class="hidden"> Sakit
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black text-xs hover:from-emerald-600 hover:to-teal-700 transition shadow-lg flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-check-circle text-lg"></i> Simpan Presensi Saya
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Rekap Tabel Presensi -->
+                    <div class="lg:col-span-2 bg-white/90 p-6 rounded-3xl border-2 border-emerald-200 shadow-lg space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-extrabold text-base text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-list-check text-emerald-600"></i> Rekapitulasi Presensi Hari Ini
+                            </h3>
+                            <button onclick="clearAttendance()" class="text-[11px] text-red-500 font-bold hover:underline">Reset Presensi</button>
+                        </div>
+
+                        <div class="overflow-x-auto max-h-[350px] custom-scrollbar">
+                            <table class="w-full text-left border-collapse text-xs">
+                                <thead class="sticky top-0 bg-emerald-600 text-white font-extrabold">
+                                    <tr>
+                                        <th class="p-3 rounded-l-xl">No</th>
+                                        <th class="p-3">Nama Siswa</th>
+                                        <th class="p-3">Kelas</th>
+                                        <th class="p-3">Tanggal</th>
+                                        <th class="p-3 rounded-r-xl">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="attendance-table-body" class="divide-y divide-emerald-100 font-semibold text-slate-700">
+                                    <!-- Dynamic attendance rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= MATERI PEMBELAJARAN SECTION ================= -->
+        <section id="sec-materi" class="hidden space-y-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Materi Pembelajaran IPS IX</h2>
+                    <p class="text-slate-700 font-bold text-xs sm:text-sm">Semester 1 • Video Pembelajaran & Sub-Bahasan</p>
+                </div>
+                <!-- Chapter Selector Tabs -->
+                <div class="flex bg-white/90 p-1.5 rounded-2xl border-2 border-purple-300 shadow-md">
+                    <button onclick="switchChapter(1)" id="btn-bab1" class="px-5 py-2.5 rounded-xl font-black text-xs sm:text-sm transition nav-active">
+                        <i class="fa-solid fa-people-roof mr-1.5"></i> BAB 1: Manusia & Perubahan
+                    </button>
+                    <button onclick="switchChapter(2)" id="btn-bab2" class="px-5 py-2.5 rounded-xl font-black text-xs sm:text-sm transition text-slate-700 hover:bg-purple-100">
+                        <i class="fa-solid fa-coins mr-1.5"></i> BAB 2: Ekonomi Digital
+                    </button>
+                </div>
+            </div>
+
+            <!-- BAB 1 CONTENT -->
+            <div id="content-bab1" class="space-y-6">
+                <!-- Video Box Bab 1 -->
+                <div class="colorful-card rounded-3xl p-6 shadow-xl border-4 border-white bg-gradient-to-r from-purple-100 to-pink-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-10 h-10 rounded-2xl bg-red-600 text-white flex items-center justify-center text-lg shadow-md">
+                            <i class="fa-brands fa-youtube"></i>
+                        </span>
+                        <div>
+                            <h3 class="font-black text-lg text-slate-900">Video Pembelajaran BAB 1: Manusia dan Perubahan</h3>
+                            <p class="text-xs text-purple-900 font-semibold">Tonton video interaktif pendukung materi di bawah ini</p>
+                        </div>
+                    </div>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black border-2 border-purple-300">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/jwd5-7sm7d0" title="BAB 1 Manusia dan Perubahan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Subbab Cards Bab 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="vibrant-card-purple p-6 rounded-3xl hover:scale-105 transition shadow-lg">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-purple-600 text-white text-xs font-black">Sub-bab A</span>
+                            <i class="fa-solid fa-arrows-rotate text-purple-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-black text-lg text-purple-950">Perubahan Sosial</h4>
+                        <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                            Membahas tentang pengertian, bentuk-bentuk perubahan sosial (cepat/lambat, besar/kecil, direncanakan/tidak), serta faktor pendorong dan penghambatnya dalam kehidupan masyarakat.
+                        </p>
+                    </div>
+
+                    <div class="vibrant-card-pink p-6 rounded-3xl hover:scale-105 transition shadow-lg">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-pink-600 text-white text-xs font-black">Sub-bab B</span>
+                            <i class="fa-solid fa-city text-pink-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-black text-lg text-pink-950">Perubahan Sosial di Era Modernisasi</h4>
+                        <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                            Menganalisis proses modernisasi di Indonesia, dampak positif dan negatif terhadap gaya hidup, pola pikir, serta pergeseran nilai-nilai sosial budaya masyarakat.
+                        </p>
+                    </div>
+
+                    <div class="vibrant-card-blue p-6 rounded-3xl hover:scale-105 transition shadow-lg">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-black">Sub-bab C</span>
+                            <i class="fa-solid fa-globe text-blue-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-black text-lg text-blue-950">Globalisasi</h4>
+                        <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                            Menjelaskan ciri, faktor pendorong, dan pengaruh era globalisasi dalam bidang ekonomi, budaya, komunikasi, dan transportasi serta menyikapinya secara bijak.
+                        </p>
+                    </div>
+
+                    <div class="vibrant-card-emerald p-6 rounded-3xl hover:scale-105 transition shadow-lg">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-black">Sub-bab D</span>
+                            <i class="fa-solid fa-seedling text-emerald-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-black text-lg text-emerald-950">Kearifan Lokal</h4>
+                        <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                            Mengidentifikasi nilai-nilai kearifan lokal Nusantara (gotong royong, subak, sasi) sebagai benteng pertahanan jati diri bangsa di tengah arus globalisasi.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Asesmen Box BAB 1 -->
+                <div class="p-6 rounded-3xl bg-gradient-to-r from-purple-700 via-pink-600 to-red-500 text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border-2 border-white">
+                    <div class="space-y-1 text-center sm:text-left">
+                        <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-extrabold uppercase">Evaluasi Bab 1</span>
+                        <h4 class="font-black text-xl">Asesmen Sumatif & STS Bab 1</h4>
+                        <p class="text-xs text-purple-100">Uji pemahaman materi perubahan sosial dan kearifan lokal.</p>
+                    </div>
+                    <button onclick="switchSection('tugas')" class="px-6 py-3 rounded-2xl bg-amber-400 text-purple-950 font-black text-xs hover:bg-amber-300 transition shadow-lg">
+                        Kerjakan Asesmen <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- BAB 2 CONTENT -->
+            <div id="content-bab2" class="hidden space-y-6">
+                <!-- Video Box Bab 2 -->
+                <div class="colorful-card rounded-3xl p-6 shadow-xl border-4 border-white bg-gradient-to-r from-amber-100 to-orange-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-10 h-10 rounded-2xl bg-red-600 text-white flex items-center justify-center text-lg shadow-md">
+                            <i class="fa-brands fa-youtube"></i>
+                        </span>
+                        <div>
+                            <h3 class="font-black text-lg text-slate-900">Video Pembelajaran BAB 2: Perkembangan Ekonomi Digital</h3>
+                            <p class="text-xs text-amber-950 font-semibold">Tonton video interaktif transaksi ekonomi modern di bawah ini</p>
+                        </div>
+                    </div>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black border-2 border-amber-300">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/1H_5UP9pwg8" title="BAB 2 Perkembangan Ekonomi Digital" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Subbab Cards Bab 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="vibrant-card-amber p-6 rounded-3xl hover:scale-105 transition shadow-lg">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-amber-600 text-white text-xs font-black">Sub-bab A</span>
+                            <i class="fa-solid fa-money-bill-transfer text-amber-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-black text-lg text-amber-950">Uang & Lembaga Keuangan</h4>
+                        <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                            Menjelaskan sejarah dan fungsi uang, jenis-jenis lembaga keuangan Bank dan Non-Bank (Asuransi, Pegadaian, Koperasi), serta perannya dalam perekonomian.
+                        </p>
+                    </div>
+
+                    <div class="vibrant-card-blue p-6 rounded-3xl hover:scale-105 transition shadow-lg">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-black">Sub-bab B</span>
+                            <i class="fa-solid fa-users-line text-blue-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-black text-lg text-blue-950">Interaksi Masyarakat Abad ke-21</h4>
+                        <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                            Menganalisis pergeseran pola interaksi sosial-ekonomi abad 21 yang didorong oleh internet, media sosial, serta keterampilan abad 21 (Critical Thinking, Communication, Collaboration, Creativity).
+                        </p>
+                    </div>
+
+                    <div class="vibrant-card-purple p-6 rounded-3xl hover:scale-105 transition shadow-lg">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-purple-600 text-white text-xs font-black">Sub-bab C</span>
+                            <i class="fa-solid fa-qrcode text-purple-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-black text-lg text-purple-950">Transaksi Ekonomi di Era Digital</h4>
+                        <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                            Mempelajari fenomena E-Commerce, Dompet Digital (E-Wallet), QRIS, Banking App, serta mitigasi risiko keamanan transaksi online.
+                        </p>
+                    </div>
+
+                    <div class="vibrant-card-pink p-6 rounded-3xl hover:scale-105 transition shadow-lg">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-pink-600 text-white text-xs font-black">Sub-bab D</span>
+                            <i class="fa-solid fa-piggy-bank text-pink-700 text-2xl"></i>
+                        </div>
+                        <h4 class="font-black text-lg text-pink-950">Literasi Keuangan</h4>
+                        <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed">
+                            Menyusun perencanaan keuangan pribadi (skala prioritas kebutuhan vs keinginan), budaya menabung, serta menghindari jebakan pinjaman online ilegal (pinjol).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Asesmen Box BAB 2 -->
+                <div class="p-6 rounded-3xl bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 text-white shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border-2 border-white">
+                    <div class="space-y-1 text-center sm:text-left">
+                        <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-extrabold uppercase">Evaluasi Akhir Semester</span>
+                        <h4 class="font-black text-xl">Asesmen Sumatif & SAS Bab 2</h4>
+                        <p class="text-xs text-pink-100">Uji kompetensi transaksi digital dan penyusunan anggaran keuangan.</p>
+                    </div>
+                    <button onclick="switchSection('tugas')" class="px-6 py-3 rounded-2xl bg-yellow-300 text-rose-950 font-black text-xs hover:bg-yellow-200 transition shadow-lg">
+                        Kerjakan Asesmen <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= RPP SECTION ================= -->
+        <section id="sec-rpp" class="hidden space-y-8">
+            <div class="colorful-card p-6 sm:p-8 rounded-3xl shadow-2xl border-4 border-white bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b-2 border-purple-200">
+                    <div>
+                        <span class="px-4 py-1.5 rounded-full bg-purple-600 text-white text-xs font-black uppercase">Perangkat Pembelajaran</span>
+                        <h2 class="text-2xl sm:text-3xl font-black text-purple-950 mt-1">Rencana Pelaksanaan Pembelajaran (RPP)</h2>
+                        <p class="text-xs text-slate-600 font-semibold">Guru Pengampu: Azalia Fadillah, S.Pd. • Kelas IX IPS</p>
+                    </div>
+
+                    <!-- Curriculum Switcher -->
+                    <div class="flex bg-white/80 p-1.5 rounded-2xl border-2 border-purple-300 shadow">
+                        <button onclick="switchCurriculum('k13')" id="btn-k13" class="px-4 py-2 rounded-xl text-xs font-black transition bg-purple-600 text-white shadow-sm">
+                            Kurikulum 2013 (K13)
+                        </button>
+                        <button onclick="switchCurriculum('merdeka')" id="btn-merdeka" class="px-4 py-2 rounded-xl text-xs font-black transition text-slate-700 hover:text-purple-700">
+                            Kurikulum Merdeka (Modul Ajar)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RPP K13 VIEW -->
+                <div id="rpp-k13-view" class="space-y-6 pt-6">
+                    <div class="p-4 rounded-2xl bg-amber-200/80 border-2 border-amber-400 flex items-center gap-3">
+                        <i class="fa-solid fa-circle-info text-amber-800 text-2xl"></i>
+                        <p class="text-xs text-amber-950 font-extrabold">
+                            Format RPP K13 berpatokan pada KI-1 hingga KI-4, Indikator Pencapaian Kompetensi (IPK), serta alokasi 3 JP/minggu.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="vibrant-card-purple p-5 rounded-3xl shadow-md space-y-3">
+                            <h4 class="font-black text-base text-purple-950 border-b-2 border-purple-300 pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-folder text-purple-600"></i> K13 BAB 1 — Manusia dan Perubahan
+                            </h4>
+                            <div class="text-xs space-y-2 text-slate-700 font-medium">
+                                <p><strong>Model:</strong> Problem Based Learning & Project Based Learning</p>
+                                <p><strong>KD 3.1 - 3.4:</strong> Menganalisis Perubahan Sosial, Modernisasi, Globalisasi, & Kearifan Lokal.</p>
+                                <p><strong>Langkah Pembelajaran:</strong> Pendahuluan (15 mnt), Mengamati & Menanya (25 mnt), Mengumpulkan Informasi & Menalar (50 mnt), Presentasi & Penutup (30 mnt).</p>
+                                <p><strong>Penilaian:</strong> Sikap (Jurnal Observasi), Pengetahuan (Tes Tulis STS), Keterampilan (Rubrik Poster/Video).</p>
+                            </div>
+                        </div>
+
+                        <div class="vibrant-card-pink p-5 rounded-3xl shadow-md space-y-3">
+                            <h4 class="font-black text-base text-pink-950 border-b-2 border-pink-300 pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-folder text-pink-600"></i> K13 BAB 2 — Perkembangan Ekonomi Digital
+                            </h4>
+                            <div class="text-xs space-y-2 text-slate-700 font-medium">
+                                <p><strong>Model:</strong> Discovery Learning & Simulasi Transaksi</p>
+                                <p><strong>KD 3.5 - 3.8:</strong> Menganalisis Uang/Lembaga Keuangan, Interaksi Abad 21, Transaksi Digital, Literasi Keuangan.</p>
+                                <p><strong>Langkah Pembelajaran:</strong> Simulasi QRIS/E-Wallet, Studi Kasus Waspada Pinjol, Penyusunan Anggaran Uang Saku.</p>
+                                <p><strong>Penilaian:</strong> Penilaian Diri, Tes Tulis SAS, Project Anggaran Bulanan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RPP MERDEKA VIEW -->
+                <div id="rpp-merdeka-view" class="hidden space-y-6 pt-6">
+                    <div class="p-4 rounded-2xl bg-emerald-200/80 border-2 border-emerald-400 flex items-center gap-3">
+                        <i class="fa-solid fa-sparkles text-emerald-800 text-2xl"></i>
+                        <p class="text-xs text-emerald-950 font-extrabold">
+                            Modul Ajar Kurikulum Merdeka berfokus pada Capaian Pembelajaran (CP) Fase D, Profil Pelajar Pancasila, & Asesmen Formatif/Sumatif.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="vibrant-card-emerald p-5 rounded-3xl shadow-md space-y-3">
+                            <h4 class="font-black text-base text-emerald-950 border-b-2 border-emerald-300 pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-leaf text-emerald-600"></i> Modul Bab 1 (Fase D)
+                            </h4>
+                            <div class="text-xs space-y-2 text-slate-700 font-medium">
+                                <p><strong>Profil Pelajar Pancasila:</strong> Berkebinekaan Global, Bernalar Kritis, Gotong Royong, Kreatif.</p>
+                                <p><strong>Pertanyaan Pemantik:</strong> "Apa yang berubah dari cara hidup kakek-nenekmu dibanding sekarang?"</p>
+                                <p><strong>TP 1.1 - 1.4:</strong> Menjelaskan konsep perubahan sosial hingga merancang upaya pelestarian kearifan lokal.</p>
+                            </div>
+                        </div>
+
+                        <div class="vibrant-card-blue p-5 rounded-3xl shadow-md space-y-3">
+                            <h4 class="font-black text-base text-cyan-950 border-b-2 border-cyan-300 pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-mobile-screen-button text-cyan-600"></i> Modul Bab 2 (Fase D)
+                            </h4>
+                            <div class="text-xs space-y-2 text-slate-700 font-medium">
+                                <p><strong>Profil Pelajar Pancasila:</strong> Mandiri, Bernalar Kritis, Kreatif Menyusun Anggaran.</p>
+                                <p><strong>Pertanyaan Pemantik:</strong> "Jika diberi uang saku Rp100.000, apa yang kamu dahulukan?"</p>
+                                <p><strong>TP 2.1 - 2.4:</strong> Menguasai transaksi digital, keamanan OTP, & penyusunan keuangan pribadi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= JADWAL MENGAJAR SECTION ================= -->
+        <section id="sec-jadwal" class="hidden space-y-8">
+            <div class="colorful-card p-6 sm:p-8 rounded-3xl shadow-2xl border-4 border-white bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 space-y-6">
+                <div>
+                    <span class="px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-black uppercase">Agendakan Kelas</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Jadwal Mengajar Ibu Azalia</h2>
+                    <p class="text-xs text-slate-600 font-bold">Tahun Ajaran 2026/2027 • Mata Pelajaran IPS Kelas 9</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[600px] shadow-lg rounded-2xl overflow-hidden">
+                        <thead>
+                            <tr class="bg-gradient-to-r from-purple-700 via-pink-600 to-amber-500 text-white text-xs uppercase font-black">
+                                <th class="p-4">Hari</th>
+                                <th class="p-4">Waktu (WIB)</th>
+                                <th class="p-4">Kelas</th>
+                                <th class="p-4">Ruang</th>
+                                <th class="p-4">Fokus Sub-materi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-purple-200 text-xs text-slate-800 font-bold bg-white/90">
+                            <tr class="hover:bg-purple-100/70 transition">
+                                <td class="p-4 text-purple-900 flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span> Senin
+                                </td>
+                                <td class="p-4">07:30 - 09:30</td>
+                                <td class="p-4"><span class="px-3 py-1 rounded-lg bg-purple-200 text-purple-900 font-black">IX-A</span></td>
+                                <td class="p-4">Ruang 9.1</td>
+                                <td class="p-4">Perubahan Sosial & Modernisasi</td>
+                            </tr>
+                            <tr class="hover:bg-pink-100/70 transition">
+                                <td class="p-4 text-pink-900 flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-pink-600"></span> Selasa
+                                </td>
+                                <td class="p-4">09:45 - 11:45</td>
+                                <td class="p-4"><span class="px-3 py-1 rounded-lg bg-pink-200 text-pink-900 font-black">IX-B</span></td>
+                                <td class="p-4">Ruang 9.2</td>
+                                <td class="p-4">Globalisasi & Kearifan Lokal</td>
+                            </tr>
+                            <tr class="hover:bg-cyan-100/70 transition">
+                                <td class="p-4 text-cyan-900 flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span> Rabu
+                                </td>
+                                <td class="p-4">07:30 - 09:30</td>
+                                <td class="p-4"><span class="px-3 py-1 rounded-lg bg-cyan-200 text-cyan-900 font-black">IX-C</span></td>
+                                <td class="p-4">Ruang 9.3</td>
+                                <td class="p-4">Uang & Lembaga Keuangan</td>
+                            </tr>
+                            <tr class="hover:bg-emerald-100/70 transition">
+                                <td class="p-4 text-emerald-900 flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span> Kamis
+                                </td>
+                                <td class="p-4">10:15 - 12:15</td>
+                                <td class="p-4"><span class="px-3 py-1 rounded-lg bg-emerald-200 text-emerald-900 font-black">IX-D</span></td>
+                                <td class="p-4">Lab Komputer / IPS</td>
+                                <td class="p-4">Transaksi Ekonomi Digital & QRIS</td>
+                            </tr>
+                            <tr class="hover:bg-amber-100/70 transition">
+                                <td class="p-4 text-amber-900 flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span> Jumat
+                                </td>
+                                <td class="p-4">08:00 - 09:30</td>
+                                <td class="p-4"><span class="px-3 py-1 rounded-lg bg-amber-200 text-amber-900 font-black">IX-A & B</span></td>
+                                <td class="p-4">Aula Utama</td>
+                                <td class="p-4">Proyek Literasi Keuangan & Konseling Tugas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= KALENDER PENDIDIKAN SECTION ================= -->
+        <section id="sec-kalender" class="hidden space-y-8">
+            <div class="colorful-card p-6 sm:p-8 rounded-3xl shadow-2xl border-4 border-white bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 space-y-6">
+                <div>
+                    <span class="px-4 py-1.5 rounded-full bg-amber-500 text-white text-xs font-black uppercase">Agenda Semester 1</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-amber-950 mt-1">Kalender Pendidikan Semester Ganjil</h2>
+                    <p class="text-xs text-amber-900 font-bold">Jadwal Asesmen, STS, SAS & Hari Libur</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="vibrant-card-purple p-5 rounded-3xl shadow-md space-y-3">
+                        <div class="flex justify-between items-center border-b-2 border-purple-300 pb-2">
+                            <span class="font-black text-purple-950">Juli</span>
+                            <span class="text-[10px] bg-purple-600 text-white px-2 py-0.5 rounded-full font-extrabold">Awal Semester</span>
+                        </div>
+                        <ul class="text-xs space-y-2 text-slate-800 font-semibold">
+                            <li class="flex items-center justify-between"><span>MPLS & Orientasi</span> <span class="font-black text-purple-700">Minggu 3</span></li>
+                            <li class="flex items-center justify-between"><span>Mulai Pembelajaran Bab 1</span> <span class="font-black text-purple-700">Minggu 4</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="vibrant-card-blue p-5 rounded-3xl shadow-md space-y-3">
+                        <div class="flex justify-between items-center border-b-2 border-blue-300 pb-2">
+                            <span class="font-black text-blue-950">Agustus</span>
+                            <span class="text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded-full font-extrabold">Materi Bab 1</span>
+                        </div>
+                        <ul class="text-xs space-y-2 text-slate-800 font-semibold">
+                            <li class="flex items-center justify-between"><span>Sub-bab Perubahan & Modernisasi</span> <span class="font-black text-blue-700">M 1-2</span></li>
+                            <li class="flex items-center justify-between"><span>Globalisasi & Kearifan Lokal</span> <span class="font-black text-blue-700">M 3-4</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="vibrant-card-amber p-5 rounded-3xl shadow-md space-y-3 border-l-8 border-amber-500">
+                        <div class="flex justify-between items-center border-b-2 border-amber-300 pb-2">
+                            <span class="font-black text-amber-950">September</span>
+                            <span class="text-[10px] bg-amber-600 text-white px-2 py-0.5 rounded-full font-extrabold">Ujian STS</span>
+                        </div>
+                        <ul class="text-xs space-y-2 text-slate-800 font-semibold">
+                            <li class="flex items-center justify-between"><span>Asesmen Sumatif Bab 1</span> <span class="font-black text-amber-700">Minggu 2</span></li>
+                            <li class="flex items-center justify-between text-amber-900 font-black"><span>Sumatif Tengah Semester (STS)</span> <span>Minggu 3</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="vibrant-card-pink p-5 rounded-3xl shadow-md space-y-3">
+                        <div class="flex justify-between items-center border-b-2 border-pink-300 pb-2">
+                            <span class="font-black text-pink-950">Oktober</span>
+                            <span class="text-[10px] bg-pink-600 text-white px-2 py-0.5 rounded-full font-extrabold">Materi Bab 2</span>
+                        </div>
+                        <ul class="text-xs space-y-2 text-slate-800 font-semibold">
+                            <li class="flex items-center justify-between"><span>Uang & Lembaga Keuangan</span> <span class="font-black text-pink-700">M 1-2</span></li>
+                            <li class="flex items-center justify-between"><span>Interaksi Abad ke-21</span> <span class="font-black text-pink-700">M 3-4</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="vibrant-card-emerald p-5 rounded-3xl shadow-md space-y-3">
+                        <div class="flex justify-between items-center border-b-2 border-emerald-300 pb-2">
+                            <span class="font-black text-emerald-950">November</span>
+                            <span class="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-extrabold">Ekonomi Digital</span>
+                        </div>
+                        <ul class="text-xs space-y-2 text-slate-800 font-semibold">
+                            <li class="flex items-center justify-between"><span>Transaksi Digital & QRIS</span> <span class="font-black text-emerald-700">M 1-2</span></li>
+                            <li class="flex items-center justify-between"><span>Literasi Keuangan</span> <span class="font-black text-emerald-700">M 3-4</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="vibrant-card-pink p-5 rounded-3xl shadow-md space-y-3 border-l-8 border-rose-500">
+                        <div class="flex justify-between items-center border-b-2 border-rose-300 pb-2">
+                            <span class="font-black text-rose-950">Desember</span>
+                            <span class="text-[10px] bg-rose-600 text-white px-2 py-0.5 rounded-full font-extrabold">SAS & Raport</span>
+                        </div>
+                        <ul class="text-xs space-y-2 text-slate-800 font-semibold">
+                            <li class="flex items-center justify-between text-rose-900 font-black"><span>Sumatif Akhir Semester (SAS)</span> <span>Minggu 1</span></li>
+                            <li class="flex items-center justify-between"><span>Pembagian Raport & Libur</span> <span class="font-black text-rose-700">M 3-4</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= KUMPULAN TUGAS SECTION ================= -->
+        <section id="sec-tugas" class="hidden space-y-8">
+            <div class="colorful-card p-6 sm:p-8 rounded-3xl shadow-2xl border-4 border-white bg-gradient-to-br from-pink-100 via-purple-50 to-rose-100 space-y-6">
+                <div>
+                    <span class="px-4 py-1.5 rounded-full bg-pink-600 text-white text-xs font-black uppercase">Pengumpulan Tugas</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-pink-950 mt-1">Kumpulan Tugas & LKS</h2>
+                    <p class="text-xs text-pink-900 font-bold">Kumpulkan berkas tugasmu secara online di sini</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="vibrant-card-purple p-5 rounded-3xl shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <span class="px-3 py-1 rounded-full bg-purple-600 text-white text-[10px] font-black">BAB 1 — Perubahan Sosial</span>
+                            <h4 class="font-black text-base text-purple-950">Tugas 1: Kliping Dampak Modernisasi & Kearifan Lokal</h4>
+                            <p class="text-xs text-slate-700 font-medium">Tenggat: 25 Agustus • Format PDF/Gambar max 5MB</p>
+                        </div>
+                        <button onclick="openUploadModal('Tugas 1: Kliping Dampak Modernisasi')" class="w-full md:w-auto px-5 py-3 rounded-2xl bg-purple-600 text-white font-black text-xs hover:bg-purple-700 transition flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-cloud-arrow-up text-base"></i> Upload Tugas
+                        </button>
+                    </div>
+
+                    <div class="vibrant-card-amber p-5 rounded-3xl shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <span class="px-3 py-1 rounded-full bg-amber-600 text-white text-[10px] font-black">BAB 1 — STS</span>
+                            <h4 class="font-black text-base text-amber-950">Lembar Jawaban Sumatif Tengah Semester (STS)</h4>
+                            <p class="text-xs text-slate-700 font-medium">Tenggat: 18 September • Soal PG dan Uraian</p>
+                        </div>
+                        <button onclick="openUploadModal('STS Bab 1')" class="w-full md:w-auto px-5 py-3 rounded-2xl bg-amber-600 text-white font-black text-xs hover:bg-amber-700 transition flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-cloud-arrow-up text-base"></i> Upload Tugas
+                        </button>
+                    </div>
+
+                    <div class="vibrant-card-pink p-5 rounded-3xl shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <span class="px-3 py-1 rounded-full bg-pink-600 text-white text-[10px] font-black">BAB 2 — Literasi Keuangan</span>
+                            <h4 class="font-black text-base text-pink-950">Proyek Rencana Anggaran Keuangan Pribadi (1 Bulan)</h4>
+                            <p class="text-xs text-slate-700 font-medium">Tenggat: 20 November • Tabel Prioritas Kebutuhan</p>
+                        </div>
+                        <button onclick="openUploadModal('Proyek Anggaran Keuangan')" class="w-full md:w-auto px-5 py-3 rounded-2xl bg-pink-600 text-white font-black text-xs hover:bg-pink-700 transition flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-cloud-arrow-up text-base"></i> Upload Tugas
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= RUANG DISKUSI SECTION ================= -->
+        <section id="sec-diskusi" class="hidden space-y-8">
+            <div class="colorful-card p-6 sm:p-8 rounded-3xl shadow-2xl border-4 border-white bg-gradient-to-br from-emerald-100 via-teal-50 to-cyan-100 space-y-6">
+                <div>
+                    <span class="px-4 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-black uppercase">Forum Interaktif</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-emerald-950 mt-1">Ruang Diskusi & Tanya Jawab</h2>
+                    <p class="text-xs text-emerald-900 font-bold">Ajukan pertanyaan seputar materi IPS Bab 1 & Bab 2</p>
+                </div>
+
+                <!-- Input Forum Post Form -->
+                <form id="forum-form" onsubmit="handlePostSubmit(event)" class="bg-white/90 p-6 rounded-3xl border-2 border-emerald-300 space-y-4 shadow-lg">
+                    <h4 class="font-black text-sm text-slate-800">Buat Diskusi Baru</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="post-name" placeholder="Nama Lengkap Siswa" required class="w-full px-4 py-2.5 rounded-xl border-2 border-emerald-200 text-xs font-semibold focus:ring-2 focus:ring-emerald-400 outline-none">
+                        <select id="post-category" class="w-full px-4 py-2.5 rounded-xl border-2 border-emerald-200 text-xs font-bold focus:ring-2 focus:ring-emerald-400 outline-none">
+                            <option value="BAB 1: Manusia dan Perubahan">BAB 1: Manusia dan Perubahan</option>
+                            <option value="BAB 2: Perkembangan Ekonomi Digital">BAB 2: Perkembangan Ekonomi Digital</option>
+                            <option value="Umum & Pertanyaan Tugas">Umum & Pertanyaan Tugas</option>
+                        </select>
+                    </div>
+                    <textarea id="post-message" rows="3" placeholder="Tuliskan pertanyaan atau pendapatmu di sini..." required class="w-full px-4 py-2.5 rounded-xl border-2 border-emerald-200 text-xs font-semibold focus:ring-2 focus:ring-emerald-400 outline-none"></textarea>
+                    <button type="submit" class="px-6 py-3 rounded-2xl bg-emerald-600 text-white font-black text-xs hover:bg-emerald-700 transition shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Kirim Diskusi
+                    </button>
+                </form>
+
+                <!-- Discussions List Container -->
+                <div id="forum-posts" class="space-y-4 pt-2">
+                    <!-- Posts will be rendered dynamically -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- UPLOAD SIMULATION MODAL -->
+    <div id="upload-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-5 shadow-2xl relative border-4 border-purple-300">
+            <button onclick="closeUploadModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="text-center space-y-2">
+                <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl mx-auto shadow-inner">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                </div>
+                <h3 class="font-black text-lg text-slate-800" id="modal-task-title">Upload Berkas Tugas</h3>
+                <p class="text-xs text-slate-500 font-semibold">Simulasi pengiriman tugas ke portal Ibu Azalia</p>
+            </div>
+            <form onsubmit="handleUploadSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Nama Siswa & Kelas</label>
+                    <input type="text" required placeholder="Contoh: Ahmad Rizky (IX-A)" class="w-full px-4 py-2.5 rounded-xl border-2 border-purple-200 text-xs outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Pilih File Tugas (PDF/PNG)</label>
+                    <input type="file" required class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-black file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-2xl bg-purple-600 text-white font-black text-xs hover:bg-purple-700 transition shadow-lg">
+                    Kirim Sekarang
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs font-extrabold px-6 py-3.5 rounded-2xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 z-50 border-2 border-emerald-400">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message">Pesan berhasil disimpan</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Attendance Data Handling
+        const defaultAttendance = [
+            { id: 1, name: "Ahmad Rizky", class: "IX-A", date: "2026-10-27", status: "Hadir" },
+            { id: 2, name: "Nabila Putri", class: "IX-B", date: "2026-10-27", status: "Hadir" },
+            { id: 3, name: "Farhan Mahendra", class: "IX-A", date: "2026-10-27", status: "Izin" }
+        ];
+
+        function getAttendanceData() {
+            const data = localStorage.getItem('ips_attendance_data');
+            if (!data) {
+                localStorage.setItem('ips_attendance_data', JSON.stringify(defaultAttendance));
+                return defaultAttendance;
+            }
+            return JSON.parse(data);
+        }
+
+        function renderAttendance() {
+            const data = getAttendanceData();
+            const tbody = document.getElementById('attendance-table-body');
+            tbody.innerHTML = '';
+
+            let countHadir = 0;
+            let countIzin = 0;
+            let countSakit = 0;
+
+            data.forEach((item, index) => {
+                if (item.status === 'Hadir') countHadir++;
+                if (item.status === 'Izin') countIzin++;
+                if (item.status === 'Sakit') countSakit++;
+
+                let badgeClass = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+                if (item.status === 'Izin') badgeClass = 'bg-blue-100 text-blue-800 border-blue-300';
+                if (item.status === 'Sakit') badgeClass = 'bg-amber-100 text-amber-800 border-amber-300';
+
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-emerald-50/70 transition border-b border-emerald-100';
+                row.innerHTML = `
+                    <td class="p-3 font-bold text-slate-500">${index + 1}</td>
+                    <td class="p-3 font-extrabold text-slate-800">${item.name}</td>
+                    <td class="p-3 font-bold text-purple-700">${item.class}</td>
+                    <td class="p-3 font-medium text-slate-600">${item.date}</td>
+                    <td class="p-3">
+                        <span class="px-2.5 py-1 rounded-lg text-[10px] font-black border ${badgeClass}">${item.status}</span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            document.getElementById('stat-hadir').innerText = countHadir;
+            document.getElementById('stat-izin').innerText = countIzin;
+            document.getElementById('stat-sakit').innerText = countSakit;
+        }
+
+        function handleAttendanceSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('att-name').value;
+            const cls = document.getElementById('att-class').value;
+            const date = document.getElementById('att-date').value;
+            const status = document.querySelector('input[name="att-status"]:checked').value;
+
+            const newItem = {
+                id: Date.now(),
+                name: name,
+                class: cls,
+                date: date,
+                status: status
+            };
+
+            const list = getAttendanceData();
+            list.unshift(newItem);
+            localStorage.setItem('ips_attendance_data', JSON.stringify(list));
+
+            document.getElementById('attendance-form').reset();
+            // set default date to today
+            document.getElementById('att-date').valueAsDate = new Date();
+            renderAttendance();
+            showToast("Presensi Anda berhasil tersimpan!");
+        }
+
+        function clearAttendance() {
+            if (confirm("Apakah Anda yakin ingin menghapus catatan presensi ini?")) {
+                localStorage.removeItem('ips_attendance_data');
+                renderAttendance();
+                showToast("Data presensi telah dibersihkan.");
+            }
+        }
+
+        // Forum Posts Logic
+        const defaultPosts = [
+            {
+                id: 1,
+                name: "Siti Rahma (IX-A)",
+                category: "BAB 1: Manusia dan Perubahan",
+                message: "Bu Azalia, apakah perubahan tren belanja online termasuk perubahan sosial yang direncanakan atau tidak direncanakan?",
+                date: "10 Okt 2026",
+                replies: [
+                    { name: "Azalia Fadillah, S.Pd.", role: "Guru", message: "Halo Siti! Tren belanja online dipengaruhi oleh teknologi (direncanakan produsen), namun perubahan gaya hidup masyarakat secara konsumsi masif sering kali menjadi dampak ikutan." }
+                ]
+            },
+            {
+                id: 2,
+                name: "Budi Pratama (IX-C)",
+                category: "BAB 2: Perkembangan Ekonomi Digital",
+                message: "Bagaimana cara kerja QRIS sehingga bisa dipakai transaksi di semua bank/dompet digital Bu?",
+                date: "12 Okt 2026",
+                replies: []
+            }
+        ];
+
+        function getPosts() {
+            const stored = localStorage.getItem('ips_forum_posts');
+            if (!stored) {
+                localStorage.setItem('ips_forum_posts', JSON.stringify(defaultPosts));
+                return defaultPosts;
+            }
+            return JSON.parse(stored);
+        }
+
+        // Section Navigation
+        function switchSection(sectionId) {
+            const sections = ['beranda', 'profil', 'presensi', 'materi', 'rpp', 'jadwal', 'kalender', 'tugas', 'diskusi'];
+            sections.forEach(id => {
+                const sec = document.getElementById(`sec-${id}`);
+                const nav = document.getElementById(`nav-${id}`);
+                if (sec) sec.classList.add('hidden');
+                if (nav) {
+                    nav.classList.remove('nav-active');
+                    nav.classList.add('text-slate-700');
+                }
+            });
+
+            const activeSec = document.getElementById(`sec-${sectionId}`);
+            const activeNav = document.getElementById(`nav-${sectionId}`);
+            if (activeSec) activeSec.classList.remove('hidden');
+            if (activeNav) {
+                activeNav.classList.remove('text-slate-700');
+                activeNav.classList.add('nav-active');
+            }
+
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function switchChapter(babNum) {
+            const bab1 = document.getElementById('content-bab1');
+            const bab2 = document.getElementById('content-bab2');
+            const btn1 = document.getElementById('btn-bab1');
+            const btn2 = document.getElementById('btn-bab2');
+
+            if (babNum === 1) {
+                bab1.classList.remove('hidden');
+                bab2.classList.add('hidden');
+                btn1.classList.add('nav-active');
+                btn2.classList.remove('nav-active');
+                btn2.classList.add('text-slate-700');
+            } else {
+                bab2.classList.remove('hidden');
+                bab1.classList.add('hidden');
+                btn2.classList.add('nav-active');
+                btn1.classList.remove('nav-active');
+                btn1.classList.add('text-slate-700');
+            }
+        }
+
+        function switchCurriculum(type) {
+            const vK13 = document.getElementById('rpp-k13-view');
+            const vMerdeka = document.getElementById('rpp-merdeka-view');
+            const bK13 = document.getElementById('btn-k13');
+            const bMerdeka = document.getElementById('btn-merdeka');
+
+            if (type === 'k13') {
+                vK13.classList.remove('hidden');
+                vMerdeka.classList.add('hidden');
+                bK13.className = "px-4 py-2 rounded-xl text-xs font-black transition bg-purple-600 text-white shadow-sm";
+                bMerdeka.className = "px-4 py-2 rounded-xl text-xs font-black transition text-slate-700 hover:text-purple-700";
+            } else {
+                vMerdeka.classList.remove('hidden');
+                vK13.classList.add('hidden');
+                bMerdeka.className = "px-4 py-2 rounded-xl text-xs font-black transition bg-emerald-600 text-white shadow-sm";
+                bK13.className = "px-4 py-2 rounded-xl text-xs font-black transition text-slate-700 hover:text-purple-700";
+            }
+        }
+
+        function renderForum() {
+            const posts = getPosts();
+            const container = document.getElementById('forum-posts');
+            container.innerHTML = '';
+
+            posts.forEach(post => {
+                const card = document.createElement('div');
+                card.className = "p-5 rounded-3xl bg-white/90 border-2 border-emerald-200 shadow-md space-y-3";
+                
+                let repliesHtml = '';
+                if (post.replies && post.replies.length > 0) {
+                    repliesHtml = `<div class="mt-3 pt-3 border-t border-emerald-100 space-y-2">`;
+                    post.replies.forEach(rep => {
+                        repliesHtml += `
+                            <div class="bg-purple-100/70 p-3 rounded-2xl text-xs space-y-1 border border-purple-200">
+                                <span class="font-black text-purple-900">${rep.name} ${rep.role ? `<span class="bg-purple-600 text-white text-[10px] px-2 py-0.5 rounded-md ml-1 font-extrabold">${rep.role}</span>` : ''}</span>
+                                <p class="text-slate-700 font-medium">${rep.message}</p>
+                            </div>
+                        `;
+                    });
+                    repliesHtml += `</div>`;
+                }
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 text-white text-xs font-black flex items-center justify-center shadow">
+                                ${post.name.charAt(0)}
+                            </div>
+                            <div>
+                                <h5 class="font-extrabold text-xs text-slate-800">${post.name}</h5>
+                                <span class="text-[10px] text-slate-500 font-medium">${post.date}</span>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black">${post.category}</span>
+                    </div>
+                    <p class="text-xs text-slate-700 font-semibold leading-relaxed">${post.message}</p>
+                    ${repliesHtml}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function handlePostSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('post-name').value;
+            const category = document.getElementById('post-category').value;
+            const message = document.getElementById('post-message').value;
+
+            const newPost = {
+                id: Date.now(),
+                name: name,
+                category: category,
+                message: message,
+                date: "Baru Saja",
+                replies: []
+            };
+
+            const posts = getPosts();
+            posts.unshift(newPost);
+            localStorage.setItem('ips_forum_posts', JSON.stringify(posts));
+            
+            document.getElementById('forum-form').reset();
+            renderForum();
+            showToast("Diskusi berhasil dikirim!");
+        }
+
+        function openUploadModal(taskTitle) {
+            document.getElementById('modal-task-title').innerText = taskTitle;
+            document.getElementById('upload-modal').classList.remove('hidden');
+        }
+
+        function closeUploadModal() {
+            document.getElementById('upload-modal').classList.add('hidden');
+        }
+
+        function handleUploadSubmit(e) {
+            e.preventDefault();
+            closeUploadModal();
+            showToast("Tugas berhasil diunggah ke portal!");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        window.onload = function() {
+            renderForum();
+            renderAttendance();
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('att-date');
+            if (dateInput) dateInput.value = today;
+        }
+    </script>
+</body>
+</html>
